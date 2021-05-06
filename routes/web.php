@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'ProductController@home')->name('welcome');
+Route::get('/', function(){
+    $products = Product::all();
+    
+    return view('welcome', compact('products'));
+})->name('welcome');
 
 Route::resource('products', 'ProductController');
+
+Route::get('/clear', function() {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+});

@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function home()
-    {
-        $products = Product::all();
+    // public function home()
+    // {
+    //     $products = Product::all();
 
-        return view('welcome', compact('products'));
-    }
+    //     return view('welcome', compact('products'));
+    // }
 
     /**
      * Display a listing of the resource.
